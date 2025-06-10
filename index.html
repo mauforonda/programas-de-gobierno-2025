@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.31">
@@ -31,6 +31,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./programas/morena.html" rel="next">
+<link href=".//src/images/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -42,9 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9ecff7f9bd12aa975776fbf53a35aab5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-97c9e2f1393f4b0ab3603e14805a4145.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-9ecff7f9bd12aa975776fbf53a35aab5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5f890b138ed27ae3a374e6a5c1203224.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1f69fcbe3d9d5cea0eed6452b00cbdc8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-5f890b138ed27ae3a374e6a5c1203224.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -59,24 +62,82 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listado .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listado'] = new List('listing-listado', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -253,13 +314,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">👋</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Programas de Gobierno para las Elecciones Nacionales 2025 en Bolivia</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -273,27 +334,27 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Programas de Gobierno</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Buscar"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">👋</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Programas de Gobierno para las Elecciones Nacionales 2025 en Bolivia</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Programas</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -355,24 +416,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#morena" id="toc-morena" class="nav-link active" data-scroll-target="#morena">Morena</a></li>
-  <li><a href="#alianza-libertad-y-democracia" id="toc-alianza-libertad-y-democracia" class="nav-link" data-scroll-target="#alianza-libertad-y-democracia">Alianza Libertad y Democracia</a></li>
-  <li><a href="#alianza-popular" id="toc-alianza-popular" class="nav-link" data-scroll-target="#alianza-popular">Alianza Popular</a></li>
-  <li><a href="#alianza-unidad" id="toc-alianza-unidad" class="nav-link" data-scroll-target="#alianza-unidad">Alianza Unidad</a></li>
-  <li><a href="#nueva-generación-patriótica" id="toc-nueva-generación-patriótica" class="nav-link" data-scroll-target="#nueva-generación-patriótica">Nueva Generación Patriótica</a></li>
-  <li><a href="#mas-ipsp" id="toc-mas-ipsp" class="nav-link" data-scroll-target="#mas-ipsp">MAS-IPSP</a></li>
-  <li><a href="#apb-súmate" id="toc-apb-súmate" class="nav-link" data-scroll-target="#apb-súmate">APB Súmate</a></li>
-  <li><a href="#libertad-y-progreso" id="toc-libertad-y-progreso" class="nav-link" data-scroll-target="#libertad-y-progreso">Libertad y Progreso</a></li>
-  <li><a href="#partido-demócrata-cristiano" id="toc-partido-demócrata-cristiano" class="nav-link" data-scroll-target="#partido-demócrata-cristiano">Partido Demócrata Cristiano</a></li>
-  <li><a href="#alianza-la-fuerza-del-pueblo" id="toc-alianza-la-fuerza-del-pueblo" class="nav-link" data-scroll-target="#alianza-la-fuerza-del-pueblo">Alianza La Fuerza del Pueblo</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -396,78 +440,210 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="morena" class="level2">
-<h2 class="anchored" data-anchor-id="morena"><a href="./programas/morena.html">Morena</a></h2>
-<ul>
-<li>Eva Copa</li>
-<li>Jorge Richter</li>
-</ul>
-</section>
-<section id="alianza-libertad-y-democracia" class="level2">
-<h2 class="anchored" data-anchor-id="alianza-libertad-y-democracia"><a href="./programas/alianza-libertad-y-democracia.html">Alianza Libertad y Democracia</a></h2>
-<ul>
-<li>Jorge Quiroga</li>
-<li>Juan Pablo Velasco</li>
-</ul>
-</section>
-<section id="alianza-popular" class="level2">
-<h2 class="anchored" data-anchor-id="alianza-popular"><a href="./programas/alianza-popular.html">Alianza Popular</a></h2>
-<ul>
-<li>Andrónico Rodríguez</li>
-<li>Mariana Prado</li>
-</ul>
-</section>
-<section id="alianza-unidad" class="level2">
-<h2 class="anchored" data-anchor-id="alianza-unidad"><a href="./programas/alianza-unidad.html">Alianza Unidad</a></h2>
-<ul>
-<li>Samuel Doria Medina</li>
-<li>José Luis Lupo</li>
-</ul>
-</section>
-<section id="nueva-generación-patriótica" class="level2">
-<h2 class="anchored" data-anchor-id="nueva-generación-patriótica"><a href="./programas/nueva-generacion-patriotica.html">Nueva Generación Patriótica</a></h2>
-<ul>
-<li>Jaime Dunn</li>
-<li>Édgar Uriona</li>
-</ul>
-</section>
-<section id="mas-ipsp" class="level2">
-<h2 class="anchored" data-anchor-id="mas-ipsp"><a href="./programas/mas-ipsp.html">MAS-IPSP</a></h2>
-<ul>
-<li>Eduardo del Castillo</li>
-<li>Milán Berna</li>
-</ul>
-</section>
-<section id="apb-súmate" class="level2">
-<h2 class="anchored" data-anchor-id="apb-súmate"><a href="./programas/apb-sumate.html">APB Súmate</a></h2>
-<ul>
-<li>Manfred Reyes Villa</li>
-<li>Juan Carlos Medrano</li>
-</ul>
-</section>
-<section id="libertad-y-progreso" class="level2">
-<h2 class="anchored" data-anchor-id="libertad-y-progreso"><a href="./programas/libertad-y-progreso-adn.html">Libertad y Progreso</a></h2>
-<ul>
-<li>Paulo Folster</li>
-<li>Antonio Saravia</li>
-</ul>
-</section>
-<section id="partido-demócrata-cristiano" class="level2">
-<h2 class="anchored" data-anchor-id="partido-demócrata-cristiano"><a href="./programas/partido-democrata-cristiano.html">Partido Demócrata Cristiano</a></h2>
-<ul>
-<li>Rodrigo Paz</li>
-<li>Edman Lara</li>
-</ul>
-</section>
-<section id="alianza-la-fuerza-del-pueblo" class="level2">
-<h2 class="anchored" data-anchor-id="alianza-la-fuerza-del-pueblo"><a href="./programas/alianza-la-fuerza-del-pueblo.html">Alianza La Fuerza del Pueblo</a></h2>
-<ul>
-<li>Jhonny Fernández</li>
-<li>Felipe Quispe</li>
-</ul>
+<p>Transcripciones de los <a href="https://www.oep.org.bo/elecciones-generales-2025/nacional-2025/">programas de gobierno</a> presentados para las elecciones nacionales 2025 en Bolivia.</p>
+<div id="listing-listado" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table table-hover">
+<thead>
+<tr>
+
+<th>
+ 
+</th>
+
+<th>
+Partido
+</th>
+
+<th>
+Candidato
+</th>
+
+<th>
+Conteo de Palabras
+</th>
+
+</tr>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-listing-file-modified-sort="1749529302677" data-listing-reading-time-sort="16" data-listing-word-count-sort="3097" data-listing-title-sort="Libertad y Progreso ADN" data-listing-filename-sort="libertad-y-progreso-adn.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/libertad-y-progreso-adn.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/libertad-y-progreso-adn.html" class="title listing-title">Libertad y Progreso ADN</a>
+</td>
+<td>
+<span class="listing-description">Paulo Folster</span>
+</td>
+<td>
+<span class="listing-word-count">3,097 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-file-modified-sort="1749529302678" data-listing-reading-time-sort="21" data-listing-word-count-sort="4021" data-listing-title-sort="Nueva Generación Patriótica" data-listing-filename-sort="nueva-generacion-patriotica.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/nueva-generacion-patriotica.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/nueva-generacion-patriotica.html" class="title listing-title">Nueva Generación Patriótica</a>
+</td>
+<td>
+<span class="listing-description">Jaime Dunn</span>
+</td>
+<td>
+<span class="listing-word-count">4,021 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-listing-file-modified-sort="1749529302678" data-listing-reading-time-sort="34" data-listing-word-count-sort="6750" data-listing-title-sort="Partido Demócrata Cristiano" data-listing-filename-sort="partido-democrata-cristiano.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/partido-democrata-cristiano.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/partido-democrata-cristiano.html" class="title listing-title">Partido Demócrata Cristiano</a>
+</td>
+<td>
+<span class="listing-description">Rodrigo Paz</span>
+</td>
+<td>
+<span class="listing-word-count">6,750 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-listing-file-modified-sort="1749529302677" data-listing-reading-time-sort="42" data-listing-word-count-sort="8392" data-listing-title-sort="MAS-IPSP" data-listing-filename-sort="mas-ipsp.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/mas-ipsp.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/mas-ipsp.html" class="title listing-title">MAS-IPSP</a>
+</td>
+<td>
+<span class="listing-description">Eduardo del Castillo</span>
+</td>
+<td>
+<span class="listing-word-count">8,392 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-listing-file-modified-sort="1749529302677" data-listing-reading-time-sort="45" data-listing-word-count-sort="8892" data-listing-title-sort="MORENA" data-listing-filename-sort="morena.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/morena.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/morena.html" class="title listing-title">MORENA</a>
+</td>
+<td>
+<span class="listing-description">Eva Copa</span>
+</td>
+<td>
+<span class="listing-word-count">8,892 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-listing-file-modified-sort="1749529302673" data-listing-reading-time-sort="80" data-listing-word-count-sort="15989" data-listing-title-sort="Alianza la Fuerza del Pueblo" data-listing-filename-sort="alianza-la-fuerza-del-pueblo.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/alianza-la-fuerza-del-pueblo.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/alianza-la-fuerza-del-pueblo.html" class="title listing-title">Alianza la Fuerza del Pueblo</a>
+</td>
+<td>
+<span class="listing-description">Jhonny Fernández</span>
+</td>
+<td>
+<span class="listing-word-count">15,989 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-listing-file-modified-sort="1749529302675" data-listing-reading-time-sort="85" data-listing-word-count-sort="16871" data-listing-title-sort="Alianza Popular" data-listing-filename-sort="alianza-popular.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/alianza-popular.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/alianza-popular.html" class="title listing-title">Alianza Popular</a>
+</td>
+<td>
+<span class="listing-description">Andrónico Rodríguez</span>
+</td>
+<td>
+<span class="listing-word-count">16,871 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="7" data-listing-file-modified-sort="1749529302676" data-listing-reading-time-sort="87" data-listing-word-count-sort="17228" data-listing-title-sort="APB Súmate" data-listing-filename-sort="apb-sumate.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/apb-sumate.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/apb-sumate.html" class="title listing-title">APB Súmate</a>
+</td>
+<td>
+<span class="listing-description">Manfred Reyes Villa</span>
+</td>
+<td>
+<span class="listing-word-count">17,228 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="8" data-listing-file-modified-sort="1749529302676" data-listing-reading-time-sort="108" data-listing-word-count-sort="21431" data-listing-title-sort="Alianza Unidad" data-listing-filename-sort="alianza-unidad.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/alianza-unidad.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/alianza-unidad.html" class="title listing-title">Alianza Unidad</a>
+</td>
+<td>
+<span class="listing-description">Samuel Doria Media</span>
+</td>
+<td>
+<span class="listing-word-count">21,431 palabras</span>
+</td>
+
+</tr>
+
+<tr data-index="9" data-listing-file-modified-sort="1749529302674" data-listing-reading-time-sort="120" data-listing-word-count-sort="23809" data-listing-title-sort="Alianza Libertad y Democracia" data-listing-filename-sort="alianza-libertad-y-democracia.md" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="./src/images/alianza-libertad-y-democracia.webp" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./programas/alianza-libertad-y-democracia.html" class="title listing-title">Alianza Libertad y Democracia</a>
+</td>
+<td>
+<span class="listing-description">Jorge Quiroga</span>
+</td>
+<td>
+<span class="listing-word-count">23,809 palabras</span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No hay resultados</div>
+</div>
+<p>Puedes consultar versiones de texto plano en <a href="https://github.com/mauforonda/programas-de-gobierno-2025">github</a>.</p>
 
 
-</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -508,12 +684,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiado");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiado");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -555,7 +731,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/mauforonda\.github\.io\/programas-de-gobierno-2025");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
